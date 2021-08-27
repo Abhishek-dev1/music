@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="song">
+            <h1 id="head" class="jio">PAL</h1>
+            <h3 id="nameart" class="artist">Arijit Singh</h3>
+            <div class="image">
+                <img src="anim.png">
+            </div>
+
+            <audio src="music/pal.mp3" ></audio>
+
+
+            <div class="song_ctrl">
+                <i class="fas fa-backward" id="prev" title="Previous"></i>
+                <i class="fas fa-play mainb" id="play" title="Play"></i>
+                <i class="fas fa-forward" id="next" title="Next"></i>
+            </div>
+            <div class="creator">Created by Abhishek</div>
+        </div>
+    </div>
+
+</body>
+<script>
+const music = document.querySelector("audio");
+const img = document.querySelector("img");
+const play = document.getElementById("play");
+const artist = document.getElementsByClassName("artist");
+const  jio = document.getElementsByClassName("jio");
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+const head = document.getElementById("head");
+const art = document.getElementById("nameart");
+const songs = [
+    {
+        name: "pal",
+        jio: "PAL",
+        artist: "Arijit",
+    },
+    {
+        name: "bahana",
+        jio: "BAHANA",
+        artist: "Akull",
+    },
+    {
+        name: "zindagi",
+        jio: "ZINDAGI",
+        artist: "Ajey",
+    },
+    {
+        name: "legends",
+        jio: "LEGENDS ARE MADE",
+        artist: "Sam",
+    },
+    {
+        name: "livin",
+        jio: "LIV IN",
+        artist: "Unknown",
+    },
+];
+
+let index=4;
+loadsong(songs[index]);
+let isplay = false;
+//play
+function playMusic () {
+    isplay = true;
+    music.play();
+    play.classList.replace("fa-play", "fa-pause");
+    img.classList.add("anim");
+};
+//pause
+function pauseMusic () {
+    isplay = false;
+    music.pause();
+    play.classList.replace("fa-pause", "fa-play");
+    img.classList.remove("anim");
+};
+
+play.addEventListener("click", () => {
+    if (isplay)
+        pauseMusic();
+    else
+        playMusic();
+})
+
+//change song
+function loadsong (songs)  {
+    head.innerHTML = songs.jio;
+    art.innerHTML = songs.artist;
+    music.src = "music/" + songs.name +".mp3";
+};
+
+index = 0;
+function nextSong () {
+    index = (index + 1) % songs.length;
+    loadsong(songs[index]);
+    playMusic();
+
+};
+function prevSong () {
+    index = (index - 1 + songs.length) % songs.length;
+    loadsong(songs[index]);
+    playMusic();
+};
+
+next.addEventListener("click", nextSong);
+prev.addEventListener("click", prevSong);
+</script>
+</html>
+
+    
