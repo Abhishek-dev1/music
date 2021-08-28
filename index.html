@@ -7,6 +7,7 @@
     <title>Music PLayer</title>
     <link rel="stylesheet" href="stylesheet.css">
     <link rel="shortcut icon" href="favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -44,6 +45,21 @@ const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 const head = document.getElementById("head");
 const art = document.getElementById("nameart");
+const options = {
+  bottom: '6.4rem',
+  right: '3.2rem', 
+  left: '3.2rem', 
+  time: '0.5s', 
+  mixColor: '#fff',
+  backgroundColor: '#fff', 
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff', 
+  saveInCookies: false,
+  label: '🌙', 
+  autoMatchOsTheme: true 
+}
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
 const songs = [
     {
         name: "pal",
