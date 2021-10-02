@@ -11,14 +11,14 @@ html{
 
 .container
 {
-  width: 100vw;
-  height: 100vh;
+  height: 97vh;
   background-color:#f6f6f6;
   display: grid;
   place-items: center;
 }
 .song
 {
+   margin-top: 100px;
    width: 35rem;
    height: 55rem;
    background-color:rgba(255, 255, 255, 0.87);
